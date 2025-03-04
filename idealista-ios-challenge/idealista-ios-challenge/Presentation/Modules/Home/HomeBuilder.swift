@@ -7,7 +7,12 @@
 
 import Foundation
 final class HomeBuilder: HomeBuilderProtocol {
-    func build() -> ViewController {
-        ViewController()
+    func build() -> HomeViewController {
+        let homeViewController = HomeViewController()
+        let router = HomeRouter(viewController: homeViewController)
+        let adUseCase = AdUseCase(repository: Container.shared.adRepository)
+        let homeViewModel = HomeViewModel(router: router, adUseCase: adUseCase)
+        homeViewController.viewModel = homeViewModel
+        return homeViewController
     }
 }

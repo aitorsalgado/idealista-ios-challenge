@@ -12,11 +12,11 @@ final class Container {
     weak var window: UIWindow?
     static let shared = Container()
     static let adRemoteDataSource = RemoteDataSource()
-    static let adRepository = AdRepository(remoteDataSource: adRemoteDataSource)
+    lazy var adRepository = AdRepository(remoteDataSource: Container.adRemoteDataSource)
     
     func startHome() {
         DispatchQueue.main.async {
-            self.window?.rootViewController = ViewController()
+            self.window?.rootViewController = Container.shared.homeDefaultBuilder().build()
             self.window?.makeKeyAndVisible()
         }
     }
