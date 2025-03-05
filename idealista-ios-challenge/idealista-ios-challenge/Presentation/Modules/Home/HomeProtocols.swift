@@ -16,5 +16,8 @@ protocol HomeRouterProtocol {
 }
 
 protocol HomeViewModelProtocol {
+    var ads: [Ad] { get set }
+    var adsUpdated: (() -> Void)? { get set }
+    
     func viewDidLoad()
 }

@@ -10,7 +10,13 @@ import Foundation
 final class HomeViewModel: HomeViewModelProtocol {
     let router: HomeRouterProtocol
     let adUseCase: AdUseCaseProtocol
-    var ads = [Ad]()
+    var ads = [Ad]() {
+        didSet {
+            adsUpdated?()
+        }
+    }
+    
+    var adsUpdated: (() -> Void)?
     
     init(router: HomeRouterProtocol,
          adUseCase: AdUseCaseProtocol) {
@@ -21,7 +27,6 @@ final class HomeViewModel: HomeViewModelProtocol {
     func viewDidLoad() {
         fetchAds()
     }
-    
     
     func fetchAds() {
         Task {

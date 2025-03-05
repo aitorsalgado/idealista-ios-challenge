@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Ad
-struct Ad: Codable {
+struct Ad: Hashable ,Codable {
     let propertyCode: String
     let thumbnail: String
     let floor: String
