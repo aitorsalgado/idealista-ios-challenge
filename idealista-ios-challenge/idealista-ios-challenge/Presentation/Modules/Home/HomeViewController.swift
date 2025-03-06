@@ -72,9 +72,9 @@ class HomeViewController: UIViewController {
     }
 }
 
-//MARK:
+//MARK: UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let ad = viewModel.ads[indexPath.item] else { return }
+        viewModel.pressAdDetail(adId: viewModel.ads[indexPath.row].propertyCode)
     }
 }

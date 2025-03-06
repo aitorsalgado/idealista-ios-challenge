@@ -12,7 +12,7 @@ protocol HomeBuilderProtocol {
 }
 
 protocol HomeRouterProtocol {
-    func navigateAdDetails(adId: Int)
+    func navigateAdDetail(adId: String)
 }
 
 protocol HomeViewModelProtocol {
@@ -20,4 +20,5 @@ protocol HomeViewModelProtocol {
     var adsUpdated: (() -> Void)? { get set }
     
     func viewDidLoad()
+    func pressAdDetail(adId: String)
 }

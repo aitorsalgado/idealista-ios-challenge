@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+
 final class HomeRouter {
     weak var viewController: HomeViewController!
     
@@ -15,7 +17,8 @@ final class HomeRouter {
 }
 
 extension HomeRouter: HomeRouterProtocol {
-    func navigateAdDetails(adId: Int) {
-        //TODO: Add push to detail ad view
+    func navigateAdDetail(adId: String) {
+        let adDetailViewController = UIHostingController(rootView: AdDetailSwiftUIView())
+        self.viewController.present(adDetailViewController, animated: true)
     }
 }

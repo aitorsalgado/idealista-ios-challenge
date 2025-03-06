@@ -28,6 +28,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         fetchAds()
     }
     
+    
     func fetchAds() {
         Task {
             do {
@@ -36,6 +37,10 @@ final class HomeViewModel: HomeViewModelProtocol {
                 print("Error fetching ads: \(error)")
             }
         }
+    }
+    
+    func pressAdDetail(adId: String) {
+        router.navigateAdDetail(adId: adId)
     }
     
 }
