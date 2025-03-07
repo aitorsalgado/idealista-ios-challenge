@@ -37,3 +37,9 @@ extension AdRepository: AdRepositoryProtocol {
         }
     }
 }
+
+//MARK: Repository Mock for previews
+extension AdRepository {
+    static let adRepositoryPreviewMock = AdRepository(remoteDataSource: RemoteDataSource())
+}
+

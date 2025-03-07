@@ -43,7 +43,6 @@ class HomeViewController: UIViewController {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         configuration.separatorConfiguration.bottomSeparatorInsets = .zero
         configuration.showsSeparators = true
-//        configuration.backgroundColor = .white
         
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         adCollectionView.frame = view.bounds
@@ -59,6 +58,17 @@ class HomeViewController: UIViewController {
                                                                  for: indexPath) as? AdCollectionViewCell
             cell?.updateData(ad: ad)
             
+            cell?.toggleFavorite = { [weak self] in
+                guard let self = self else { return }
+                if let index = self.viewModel.ads.firstIndex(where: { $0.propertyCode == ad.propertyCode }) {
+                    if self.viewModel.ads[index].favoriteDate == nil {
+                        self.viewModel.ads[index].favoriteDate = Date()
+                    } else {
+                        self.viewModel.ads[index].favoriteDate = nil
+                    }
+                    self.applySnapshot()
+                }
+            }
             return cell
         }
         return dataSource

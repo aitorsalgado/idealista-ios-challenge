@@ -64,7 +64,7 @@ struct AdDetailSwiftUIView: View {
 }
 
 #Preview {
-    let adUseCasePreview = AdUseCase(repository: Container.shared.adRepository)
+    let adUseCasePreview = AdUseCase(repository: AdRepository.adRepositoryPreviewMock)
     AdDetailSwiftUIView(adDetailviewModel: AdDetailViewModel(Ad: Ad.AdPreviewMock,
                                                              adUseCase: adUseCasePreview))
 }
