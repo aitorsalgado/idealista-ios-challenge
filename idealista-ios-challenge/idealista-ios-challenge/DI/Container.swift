@@ -24,4 +24,8 @@ final class Container {
     func homeDefaultBuilder() -> HomeBuilder {
         HomeBuilder()
     }
+    
+    func AdDetailDefaultBuilder() -> AdDetailBuilder {
+        AdDetailBuilder()
+    }
 }

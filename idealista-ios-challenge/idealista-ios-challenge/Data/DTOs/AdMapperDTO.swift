@@ -8,34 +8,32 @@
 import Foundation
 enum AdMapperDTO {
     static func toBO(fromDTO dtos: [AdDTO]) -> [Ad] {
-        var adsBO: [Ad] = []
-        for dto in dtos {
-            adsBO.append(Ad(propertyCode: dto.propertyCode,
-                            thumbnail: dto.thumbnail,
-                            floor: dto.floor,
-                            price: dto.price,
-                            priceInfo: PriceInfoMapperDTO.toBO(fromDTO: dto.priceInfo),
-                            propertyType: dto.propertyType,
-                            operation: dto.operation,
-                            size: dto.size,
-                            exterior: dto.exterior,
-                            rooms: dto.rooms,
-                            bathrooms: dto.bathrooms,
-                            address: dto.address,
-                            province: dto.province,
-                            municipality: dto.municipality,
-                            district: dto.district,
-                            country: dto.country,
-                            neighborhood: dto.neighborhood,
-                            latitude: dto.latitude,
-                            longitude: dto.longitude,
-                            description: dto.description,
-                            multimedia: MultimediaMapperDTO.toBO(fromDTO: dto.multimedia),
-                            features: FeaturesMapperDTO.toBO(fromDTO: dto.features),
-                            parkingSpace: ParkingSpaceMapperDTO.toBO(fromDTO: dto.parkingSpace)
-                            ))
+        dtos.map { dto in
+            Ad(propertyCode: dto.propertyCode,
+               thumbnail: dto.thumbnail,
+               floor: dto.floor,
+               price: dto.price,
+               priceInfo: PriceInfoMapperDTO.toBO(fromDTO: dto.priceInfo),
+               propertyType: dto.propertyType,
+               operation: dto.operation,
+               size: dto.size,
+               exterior: dto.exterior,
+               rooms: dto.rooms,
+               bathrooms: dto.bathrooms,
+               address: dto.address,
+               province: dto.province,
+               municipality: dto.municipality,
+               district: dto.district,
+               country: dto.country,
+               neighborhood: dto.neighborhood,
+               latitude: dto.latitude,
+               longitude: dto.longitude,
+               description: dto.description,
+               multimedia: MultimediaMapperDTO.toBO(fromDTO: dto.multimedia),
+               features: FeaturesMapperDTO.toBO(fromDTO: dto.features),
+               parkingSpace: ParkingSpaceMapperDTO.toBO(fromDTO: dto.parkingSpace)
+            )
         }
-        return adsBO
     }
 }
 
@@ -53,16 +51,16 @@ enum PriceInfoMapperDTO {
 }
 
 enum ImageMapperDTO {
-    static func toBO(fromDTO dto: ImageDTO) -> Image {
-        Image(url: dto.url,
+    static func toBO(fromDTO dto: ImageDTO) -> ImageAd {
+        ImageAd(url: dto.url,
               tag: dto.tag)
     }
 }
 
 enum MultimediaMapperDTO {
     static func toBO(fromDTO dto: MultimediaDTO) -> Multimedia {
-        var imagesDTO = dto.images
-        var imagesBO: [Image] = []
+        let imagesDTO = dto.images
+        var imagesBO: [ImageAd] = []
         for imageDTO in imagesDTO {
             imagesBO.append(ImageMapperDTO.toBO(fromDTO: imageDTO))
         }

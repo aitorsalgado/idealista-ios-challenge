@@ -75,6 +75,6 @@ class HomeViewController: UIViewController {
 //MARK: UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.pressAdDetail(adId: viewModel.ads[indexPath.row].propertyCode)
+        viewModel.pressAdDetail(ad: viewModel.ads[indexPath.row])
     }
 }

@@ -42,6 +42,13 @@ struct MultimediaDTO: Codable {
 struct ImageDTO: Codable {
     let url: String
     let tag: String
+    let localizedName: String?
+    let multimediaID: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case url, tag, localizedName
+        case multimediaID = "multimediaId"
+    }
 }
 
 // MARK: - ParkingSpace

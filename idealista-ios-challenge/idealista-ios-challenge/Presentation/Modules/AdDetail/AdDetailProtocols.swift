@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AdDetailBuilderProtocol {
-    func build() -> HomeViewController
+    func build(ad: Ad) -> AdDetailSwiftUIView
 }
 
 protocol AdDetailViewModelProtocol {

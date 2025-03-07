@@ -25,6 +25,7 @@ struct Ad: Hashable ,Codable {
     let multimedia: Multimedia
     let features: Features
     let parkingSpace: ParkingSpace?
+    var favoriteDate: Date?
 }
 
 // MARK: - Features
@@ -35,11 +36,11 @@ struct Features: Codable, Hashable {
 
 // MARK: - Multimedia
 struct Multimedia: Codable, Hashable {
-    let images: [Image]
+    let images: [ImageAd]
 }
 
 // MARK: - Image
-struct Image: Codable, Hashable {
+struct ImageAd: Codable, Hashable {
     let url: String
     let tag: String
 }
@@ -58,4 +59,35 @@ struct PriceInfo: Codable, Hashable {
 struct Price: Codable, Hashable {
     let amount: Int
     let currencySuffix: String
+}
+
+extension Ad {
+    static let AdPreviewMock = Ad(propertyCode: "Property Preview Code 1",
+                                  thumbnail: "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/00/c5/91/1273036730.webp",
+                                  floor: "",
+                                  price: 1,
+                                  priceInfo: PriceInfo(price: Price(amount: 1,
+                                                                    currencySuffix: "€")),
+                                  propertyType: "",
+                                  operation: "",
+                                  size: 1,
+                                  exterior: true,
+                                  rooms: 1,
+                                  bathrooms: 1,
+                                  address: "",
+                                  province: "",
+                                  municipality: "",
+                                  district: "",
+                                  country: "",
+                                  neighborhood: "",
+                                  latitude: 1.0,
+                                  longitude: 1.0,
+                                  description: "",
+                                  multimedia: Multimedia(images: []),
+                                  features: Features(hasAirConditioning: true,
+                                                     hasBoxRoom: true,
+                                                     hasSwimmingPool: nil,
+                                                     hasTerrace: nil,
+                                                     hasGarden: nil),
+                                  parkingSpace: nil)
 }

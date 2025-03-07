@@ -17,8 +17,8 @@ final class HomeRouter {
 }
 
 extension HomeRouter: HomeRouterProtocol {
-    func navigateAdDetail(adId: String) {
-        let adDetailViewController = UIHostingController(rootView: AdDetailSwiftUIView())
+    func navigateAdDetail(ad: Ad) {
+        let adDetailViewController = UIHostingController(rootView: Container.shared.AdDetailDefaultBuilder().build(ad: ad))
         self.viewController.present(adDetailViewController, animated: true)
     }
 }

@@ -39,8 +39,8 @@ final class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
-    func pressAdDetail(adId: String) {
-        router.navigateAdDetail(adId: adId)
+    func pressAdDetail(ad: Ad) {
+        router.navigateAdDetail(ad: ad)
     }
     
 }

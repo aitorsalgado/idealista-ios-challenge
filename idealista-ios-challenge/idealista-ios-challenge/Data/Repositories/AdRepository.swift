@@ -9,6 +9,7 @@ import Foundation
 
 protocol AdRepositoryProtocol {
     func fetchAds() async throws -> [Ad]
+    func fetchAdDetail() async throws -> AdDetail
 }
 
 class AdRepository {
@@ -20,6 +21,14 @@ class AdRepository {
 }
 
 extension AdRepository: AdRepositoryProtocol {
+    func fetchAdDetail() async throws -> AdDetail {
+        do {
+            return try await remoteDataSource.fetchAdDetail()
+        } catch {
+            throw error
+        }
+    }
+    
     func fetchAds() async throws -> [Ad] {
         do {
             return try await remoteDataSource.fetchAds()

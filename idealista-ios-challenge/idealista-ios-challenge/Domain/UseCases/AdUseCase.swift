@@ -9,6 +9,7 @@ import Foundation
 
 protocol AdUseCaseProtocol {
     func fetchAds() async throws -> [Ad]
+    func fetchAdDetail() async throws -> AdDetail
 }
 
 final class AdUseCase {
@@ -20,6 +21,14 @@ final class AdUseCase {
 }
 
 extension AdUseCase: AdUseCaseProtocol {
+    func fetchAdDetail() async throws -> AdDetail {
+        do {
+            return try await repository.fetchAdDetail()
+        } catch {
+            throw error
+        }
+    }
+    
     func fetchAds() async throws -> [Ad] {
         do {
             return try await repository.fetchAds()
